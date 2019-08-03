@@ -11,7 +11,9 @@ class TweetsController extends Controller
     public function index()
     {
         $login = Auth::user()->login;
+        // need to get tweets from tweets model
         $users = User::with('tweets')->where('login', '=', $login)->get();
+        //will be error
         foreach ($users as $key => $user) {
             $tweets = $user->tweets;
         }

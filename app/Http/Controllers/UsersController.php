@@ -18,6 +18,7 @@ class UsersController extends Controller
     public function info($id)
     {
         $users = User::with('tweets')->where('id', '=', $id)->get();
+        // will be error
         foreach ($users as $key => $user) {
             $login = $user->login;
             $tweets = $user->tweets;
