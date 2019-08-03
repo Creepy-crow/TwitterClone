@@ -6,7 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTwittAddsTable extends Migration
 {
-    public function up() {
+    public function up()
+    {
         Schema::create('twitt_adds', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('text');
@@ -15,7 +16,8 @@ class CreateTwittAddsTable extends Migration
         });
     }
 
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('twitt_adds');
     }
 }

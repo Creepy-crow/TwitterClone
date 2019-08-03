@@ -7,7 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 class Comments extends Migration
 {
 
-    public function up() {
+    public function up()
+    {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('text');
@@ -17,7 +18,8 @@ class Comments extends Migration
         });
     }
 
-    public function down() {
+    public function down()
+    {
             Schema::dropIfExists('twitt_adds');
     }
 }
