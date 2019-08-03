@@ -5,7 +5,8 @@ use App\TwittAdd;
 
 class TweetSeed extends Seeder
 {
-<<<<<<< HEAD
+//fix conflict
+    <<<<<<< HEAD
     public function run() {
         factory(TwittAdd::class, 5)->create()->make();
 =======

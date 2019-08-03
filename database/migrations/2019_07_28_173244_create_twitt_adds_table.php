@@ -6,6 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTwittAddsTable extends Migration
 {
+
+//fix conflict
 <<<<<<< HEAD
     public function up() {
 =======

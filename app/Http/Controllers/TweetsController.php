@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//fix conflict
 <<<<<<< HEAD
 =======
 //remove it, you dont use it

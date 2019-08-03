@@ -6,6 +6,7 @@ use App\User;
 
 class UsersController extends Controller
 {
+    //method {
     public function show() {
         $users = User::all();
         return view('twitter_clone.users', [
@@ -13,6 +14,7 @@ class UsersController extends Controller
         ]);
     }
 
+    //method {
     public function info($id) {
         $users = User::with('tweets')->where('id', '=', $id)->get();
         foreach ($users as $key => $user) {

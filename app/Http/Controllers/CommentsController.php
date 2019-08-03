@@ -9,13 +9,16 @@ use App\Comment;
 class CommentsController extends Controller
 {
     public function index($tweetId) {
+        //use all not get
         $comments = Comment::with('user')->get();
+        //delete comments
 //        foreach ($comments as $key => $comment) {
 //            $logins = $comment->user->name;
 //            $texts = $comment->text;
 //
 //        }
         return view('twitter_clone.allComments', [
+            //delete comments
 //            'login' => $logins,
 //            'text' => $texts
             'comments' => $comments
@@ -31,6 +34,7 @@ class CommentsController extends Controller
 
     public function create(Request $request ) {
         $user = Auth::user();
+        //dont use it like this. Use $request->text for example
         $data = $request->all();
         $user->comment()->create([
             'text' => $data['text'],

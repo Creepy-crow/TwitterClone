@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
+    //you dont dont it * 2
     //you dont need it
 	protected $table = 'tweets';
 

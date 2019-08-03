@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+//fix conflict
+
 <<<<<<< HEAD:app/TwittAdd.php
 class TwittAdd extends Model
 =======

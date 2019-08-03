@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+//fix conflict
 <<<<<<< HEAD
 
 class HomeController extends Controller
