@@ -8,13 +8,16 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
+    //fix position of {
     public function index($tweetId) {
+        // format before ->get()
         $comments = Comment::with('user')->where('tweet_id', $tweetId )->get();
         return view('twitter_clone.allComments', [
             'comments' => $comments
         ]);
     }
 
+    //fix position of {
     public function show($tweetId, $userId) {
         return view('twitter_clone.comments', [
             'userId' => $userId,
@@ -22,6 +25,7 @@ class CommentsController extends Controller
         ]);
     }
 
+    //fix position of {
     public function create(Request $request ) {
         $user = Auth::user();
         $data = $request->all();

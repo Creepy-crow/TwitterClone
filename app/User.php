@@ -24,11 +24,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    //fix position of {
     public function tweets() {
         return $this->hasMany('App\TwittAdd', 'user_id', 'id');
     }
-
+    //fix position of {
     public function comment() {
         return $this->hasMany('App\Comment', 'user_id', 'id');
     }

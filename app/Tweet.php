@@ -10,6 +10,7 @@ class Tweet extends Model {
         'user_id'
     ];
 
+    //fix position of {
     public function user() {
         return $this->belongsTo('App\User');
     }

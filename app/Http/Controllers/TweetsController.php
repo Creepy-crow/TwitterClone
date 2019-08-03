@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TweetsController extends Controller
 {
+    //fix position of {
     public function index() {
         $login = Auth::user()->login;
         $users = User::with('tweets')->where('login', '=', $login)->get();
@@ -20,6 +21,7 @@ class TweetsController extends Controller
         ]);
     }
 
+    //fix position of {
     public function create(Request $request) {
         $user = Auth::user();
         $user->tweets()->create([
@@ -29,6 +31,7 @@ class TweetsController extends Controller
         return redirect()->route('tweet');
     }
 
+    //fix position of {
     public function show() {
         return view('twitter_clone.create');
     }
