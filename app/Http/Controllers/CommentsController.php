@@ -16,10 +16,9 @@ class CommentsController extends Controller
         ]);
     }
 
-    public function show($tweetId, $userId)
+    public function show($tweetId)
     {
         return view('twitter_clone.comments', [
-            'userId' => $userId,
             'tweetId' => $tweetId
         ]);
     }
@@ -27,9 +26,10 @@ class CommentsController extends Controller
     public function create(Request $request)
     {
         $user = Auth::user();
+        $id = $user->id;
         $user->comment()->create([
             'text' => $request->text,
-            'user_id' => $request->userId,
+            'user_id' => $id,
             'tweet_id' => $request->tweetId
         ]);
 

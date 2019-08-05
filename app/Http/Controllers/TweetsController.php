@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\User;
 use App\TwittAdd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +10,8 @@ class TweetsController extends Controller
     public function index()
     {
         $id = Auth::id();
-        // need to get tweets from tweets model
-        //$users = User::with('tweets')->where('login', '=', $login)->get();
-        $tweets = [];
         $tweets = TwittAdd::with('user')->where('user_id', $id)->get();
-        $login = $tweets->user->login;
-        dump($login);
-            dd($id);
+        $login = $tweets[0]->user->login;
         return view('twitter_clone.article', [
             'login' => $login,
             'tweets' => $tweets

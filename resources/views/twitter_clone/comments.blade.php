@@ -1,4 +1,4 @@
-@extends('layouts.article')
+@extends('layouts.new')
 @section('content')
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -17,8 +17,7 @@
     @endif
 
     <form method="post" action="{{ route('new-comments') }}">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="userId" value="{{ $userId }}">
+        {{csrf_field()}}
         <input type="hidden" name="tweetId" value="{{ $tweetId }}">
         <div class="input-group">
             <div class="input-group-prepend">

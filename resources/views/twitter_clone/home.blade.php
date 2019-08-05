@@ -1,4 +1,3 @@
-@extends('layouts.article')
-
+@extends('layouts.new')
 @section('content')
     @endsection
