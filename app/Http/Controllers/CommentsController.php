@@ -10,7 +10,6 @@ class CommentsController extends Controller
 {
     public function index($tweetId)
     {
-        // format before ->get()
         $comments = Comment::with('user')->where('tweet_id', $tweetId)->get();
         return view('twitter_clone.allComments', [
             'comments' => $comments
@@ -25,7 +24,7 @@ class CommentsController extends Controller
         ]);
     }
 
-    public function create(Request $request )
+    public function create(Request $request)
     {
         $user = Auth::user();
         $user->comment()->create([
