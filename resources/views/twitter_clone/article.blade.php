@@ -16,12 +16,12 @@
         <div class="row">
             @foreach($tweets as $tweet)
                 <div class="col-md-4">
-                    <h2>{{$login}}</h2>
+                    <h2>{{$tweet->user->login}}</h2>
                     <p>{{$tweet->text}}</p>
                     <p><a class="btn btn-secondary" href="{{ route('comments', [
                     'userId'=> $tweet->user_id,
                     'tweetId' => $tweet->id
-                    ])}}" role="button">Add comments&raquo;</a></p>
+                    ])}}" role="button">Add comment</a></p>
                     <p><a class="btn btn-secondary" href="{{ route('allComments', [
                     'tweetId' => $tweet->id
                     ]) }}" role="button">View all comments</a></p>

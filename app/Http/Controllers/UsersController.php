@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TwittAdd;
 use App\User;
 
 
@@ -24,16 +25,8 @@ class UsersController extends Controller
      */
     public function info($id)
     {
-        //recreate like on screen
-        $users = User::with('tweets')->where('id', '=', $id)->get();
-        $login = [];
-        $tweets = [];
-        foreach ($users as $key => $user) {
-            $login = $user->login;
-            $tweets = $user->tweets;
-        }
+        $tweets = TwittAdd::with('user')->where('user_id', '=', $id)->get();
         return view('twitter_clone.article', [
-            'login' => $login,
             'tweets' => $tweets
         ]);
     }
