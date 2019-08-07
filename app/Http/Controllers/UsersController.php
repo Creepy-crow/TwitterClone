@@ -7,6 +7,9 @@ use App\User;
 
 class UsersController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
         $users = User::all();
@@ -15,8 +18,13 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function info($id)
     {
+        //recreate like on screen
         $users = User::with('tweets')->where('id', '=', $id)->get();
         $login = [];
         $tweets = [];
