@@ -23,10 +23,9 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Your Tweet</span>
         </div>
-        <textarea maxlength="255" name="text" id="tweet-text" class="form-control" aria-label="With textarea"
-                  value = "{{ old('text') }}"></textarea>
+        <input type="text" name="text" id="text" class="form-control" value = "{{ old("text") }}">
         @if ($errors->has('text'))
-            {{--error--}}
+            error
             @foreach ($errors-get('text') as $message)
                 <pre>{{ $message }}</pre>
             @endforeach

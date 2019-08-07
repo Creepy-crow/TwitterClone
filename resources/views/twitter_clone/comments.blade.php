@@ -1,6 +1,6 @@
 @extends('layouts.new')
 @section('content')
-    @if (count($errors) > 0)
+    @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -23,8 +23,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Your Tweet</span>
             </div>
-            <textarea maxlength="255" name="text" id="tweet-text" class="form-control" aria-label="With textarea"
-                      value = "{{ old('text') }}"></textarea>
+            <input type="text" name="text" id="tweet-text" class="form-control" value = "{{ old('text') }}">
             @if ($errors->has('text'))
                 @foreach ($errors-get('text') as $message)
                     <pre>{{ $message }}</pre>

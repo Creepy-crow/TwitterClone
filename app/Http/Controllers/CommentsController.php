@@ -25,6 +25,11 @@ class CommentsController extends Controller
 
     public function create(Request $request)
     {
+        $rules = [
+            'text' => 'required|max:25'
+        ];
+        $this->validate($request, $rules);
+
         $user = Auth::user();
         $id = $user->id;
         $user->comment()->create([

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\TwittAdd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class TweetsController extends Controller
 {
@@ -20,6 +21,16 @@ class TweetsController extends Controller
 
     public function create(Request $request)
     {
+        $messages = [];
+       $validator = Validator::make($request->all(),[
+          'text' => 'required|max:25'
+       ], $messages);
+       if($validator->fails()) {
+           return redirect()->route('create')
+               ->withErrors($validator)
+               ->withInput();
+       }
+
         $user = Auth::user();
         $user->tweets()->create([
             'text' => $request->text
