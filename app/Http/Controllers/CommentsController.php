@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentAndTweet;
 use App\Comment;
 
 class CommentsController extends Controller
@@ -16,7 +17,6 @@ class CommentsController extends Controller
     {
         $comments = Comment::with('user')->where('tweet_id', $tweetId)->get();
 
-        //use compact
         return view('twitter_clone.allComments', [
             'comments' => $comments
         ]);
@@ -28,7 +28,6 @@ class CommentsController extends Controller
      */
     public function show($tweetId)
     {
-        //use compact
         return view('twitter_clone.comments', [
             'tweetId' => $tweetId
         ]);
@@ -39,19 +38,12 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function create(Request $request)
+    public function create(CommentAndTweet $request)
     {
-        //use request
-        $rules = [
-            'text' => 'required|max:25'
-        ];
-        $this->validate($request, $rules);
-
-        $user = Auth::user();
-        $id = $user->id;
-        $user->comment()->create([
-            'text' => $request->text,
-            'user_id' => $id,
+        $validated = $request->validated();
+        Auth::user()->comment()->create([
+            'text' => $validated['text'],
+            'user_id' => Auth::user()->id,
             'tweet_id' => $request->tweetId
         ]);
 

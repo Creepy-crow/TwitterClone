@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\TwittAdd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CommentAndTweet;
 
 class TweetsController extends Controller
 {
@@ -14,12 +13,8 @@ class TweetsController extends Controller
      */
     public function index()
     {
-        //recreate it
-        $id = Auth::id();
-        $tweets = TwittAdd::with('user')->where('user_id', $id)->get();
-        $login = $tweets[0]->user->login;
+        $tweets = Auth::user()->tweets;
         return view('twitter_clone.article', [
-            'login' => $login,
             'tweets' => $tweets
         ]);
     }
@@ -28,27 +23,11 @@ class TweetsController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(CommentAndTweet $request)
     {
-        //use request
-        $messages = [];
-        $validator = Validator::make($request->all(), [
-            'text' => 'required|max:25'
-        ], $messages);
-        if ($validator->fails()) {
-            return redirect()->route('create')
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-
-//        do like this
-//        $user = Auth::user()->tweets()->create([
-//            'text' => $request->text
-//        ]);
-        $user = Auth::user();
-        $user->tweets()->create([
-            'text' => $request->text
+        $validated = $request->validated();
+        Auth::user()->tweets()->create([
+            'text' => $validated['text']
         ]);
 
         return redirect()->route('tweet');
