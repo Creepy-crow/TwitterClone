@@ -47,6 +47,6 @@ class CommentsController extends Controller
             'tweet_id' => $request->tweetId
         ]);
 
-        return redirect()->route('tweet');
+        return redirect()->route('home');
     }
 }
