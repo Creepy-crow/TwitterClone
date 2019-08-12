@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function show()
     {
         $users = User::all();
-        return view('twitter_clone.users', [
+        return view('users', [
             'users' => $users
         ]);
     }
@@ -26,7 +26,7 @@ class UsersController extends Controller
     public function info($id)
     {
         $tweets = TwittAdd::with('user')->where('user_id', '=', $id)->get();
-        return view('twitter_clone.article', [
+        return view('usersTweets', [
             'tweets' => $tweets
         ]);
     }

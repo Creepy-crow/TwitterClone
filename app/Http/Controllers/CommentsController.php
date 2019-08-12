@@ -17,7 +17,7 @@ class CommentsController extends Controller
     {
         $comments = Comment::with('user')->where('tweet_id', $tweetId)->get();
 
-        return view('twitter_clone.allComments', [
+        return view('showComments', [
             'comments' => $comments
         ]);
     }
@@ -28,7 +28,7 @@ class CommentsController extends Controller
      */
     public function show($tweetId)
     {
-        return view('twitter_clone.comments', [
+        return view('createComment', [
             'tweetId' => $tweetId
         ]);
     }

@@ -14,7 +14,7 @@ class TweetsController extends Controller
     public function index()
     {
         $tweets = Auth::user()->tweets;
-        return view('twitter_clone.article', [
+        return view('home', [
             'tweets' => $tweets
         ]);
     }
@@ -30,7 +30,7 @@ class TweetsController extends Controller
             'text' => $validated['text']
         ]);
 
-        return redirect()->route('tweet');
+        return redirect()->route('home');
     }
 
     /**
@@ -38,6 +38,6 @@ class TweetsController extends Controller
      */
     public function show()
     {
-        return view('twitter_clone.create');
+        return view('writeTweet');
     }
 }
