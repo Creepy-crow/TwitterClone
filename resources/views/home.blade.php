@@ -17,6 +17,12 @@
                                 <a href="{{ route('allComments', [
                                         'tweetId' => $tweet->id
                                         ]) }}" class="card-link">All comments</a>
+                                <a href="{{ route('edit', [
+                                        'tweetId' => $tweet->id
+                                        ]) }}" class="card-link">Edit tweet</a>
+                                <a href="{{ route('allComments', [
+                                        'tweetId' => $tweet->id
+                                        ]) }}" class="card-link">Delete tweet</a>
                             </div>
                         </div>
                     @endforeach

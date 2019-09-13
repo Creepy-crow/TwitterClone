@@ -10,10 +10,11 @@ Route::get('/users','UsersController@show')->name('users');
 Route::get('/users/{id}', 'UsersController@info')->name('info');
 Route::get('/create','TweetsController@show')->name('create');
 Route::post('/create', 'TweetsController@create')->name('add');
+Route::get('/update/{id}','TweetsController@edit')->name('edit');
+Route::put('/update/{id}','TweetsController@update')->name('update');
 Route::get('/comments/{tweetId}/{userId}', 'CommentsController@show')->name('comments');
 Route::post('/comments', 'CommentsController@create')->name('new-comments');
 Route::get('/comments/{tweetId}', 'CommentsController@index')->name('allComments');
 });
 
-//Route::get('/home', 'HomeController@index')->name('new-home');
-//Route::get('/home', 'HomeController@home')->name('new-home');
+//Route::resource('twiits', 'TweetsController' );
