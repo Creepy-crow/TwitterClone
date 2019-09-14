@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CommentAndTweet;
 use App\Comment;
+use App\TwittAdd;
 
 class CommentsController extends Controller
 {
@@ -18,7 +19,8 @@ class CommentsController extends Controller
         $comments = Comment::with('user')->where('tweet_id', $tweetId)->get();
 
         return view('showComments', [
-            'comments' => $comments
+            'comments' => $comments,
+            'tweetId' => $tweetId
         ]);
     }
 

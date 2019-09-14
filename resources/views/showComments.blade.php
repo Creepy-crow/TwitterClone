@@ -10,9 +10,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$comment->user->login}}</h5>
                                 <p class="card-text">{{$comment->text}}</p>
+                                @if (Auth::user()->tweets->find($tweetId) || $comment->user_id == Auth::user()->id)
                                 <a href="{{ route('editComment', [
-                                        'tweetId' => $comment->id
+                                        '$commentId' => $comment->id
                                         ]) }}" class="card-link">Edit comment</a>
+                                @endif
                                 {{--<a href="{{ route('', [--}}
                                         {{--'tweetId' => $tweet->id--}}
                                         {{--]) }}" class="card-link">Delete comment</a>--}}
