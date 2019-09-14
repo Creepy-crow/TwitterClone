@@ -21,7 +21,7 @@ class TweetsController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param CommentAndTweet $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function create(CommentAndTweet $request)
@@ -43,6 +43,7 @@ class TweetsController extends Controller
     }
 
     /**
+     * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -53,6 +54,11 @@ class TweetsController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @param CommentAndTweet $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function update($id, CommentAndTweet $request)
     {
         $validated = $request->validated();

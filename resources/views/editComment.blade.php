@@ -18,17 +18,17 @@
                 </div>
             @endif
 
-            <form method="post" action="{{ route('update', [
-            'tweetId' => $tweet->id
+            <form method="post" action="{{ route('updateComment', [
+            'commentId' => $comment->id
             ]) }}">
                 <input type="hidden" name="_method" value="PUT">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="text">Edit your tweet</label>
-                    <input type="text" name="text" id="text" class="form-control" value = "{{ $tweet->text }}">
+                    <input type="text" name="text" id="text" class="form-control" value = "{{ $comment->text }}">
                 </div>
 
-                <button type="submit" class="btn btn-info float-right">Edit Tweet</button>
+                <button type="submit" class="btn btn-info float-right">Edit Comment</button>
             </form>
         </div>
     </div>

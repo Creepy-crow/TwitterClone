@@ -10,6 +10,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$comment->user->login}}</h5>
                                 <p class="card-text">{{$comment->text}}</p>
+                                <a href="{{ route('editComment', [
+                                        'tweetId' => $comment->id
+                                        ]) }}" class="card-link">Edit comment</a>
+                                {{--<a href="{{ route('', [--}}
+                                        {{--'tweetId' => $tweet->id--}}
+                                        {{--]) }}" class="card-link">Delete comment</a>--}}
                             </div>
                         </div>
                     @endforeach

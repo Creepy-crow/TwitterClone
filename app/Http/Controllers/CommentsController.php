@@ -49,4 +49,34 @@ class CommentsController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($commnetId)
+    {
+        $comment = Comment::find($commnetId);
+        return view('editComment', [
+            'comment' => $comment
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @param CommentAndTweet $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update($commentId, CommentAndTweet $request)
+    {
+        $validated = $request->validated();
+        Comment::find($commentId)->update([
+            'text' => $validated['text']
+        ]);
+        $comment = Comment::find($commentId);
+        $tweetId = $comment->tweet_id;
+        return redirect()->route('allComments', [
+            'tweetId' => $tweetId
+        ]);
+    }
 }
