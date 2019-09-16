@@ -67,4 +67,15 @@ class TweetsController extends Controller
         ]);
         return redirect()->route('home');
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function delete($id)
+    {
+        TwittAdd::find($id)->delete();
+        return redirect()->route('home');
+    }
 }

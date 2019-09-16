@@ -53,7 +53,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $commentId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($commnetId)
@@ -65,7 +65,7 @@ class CommentsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $commentId
      * @param CommentAndTweet $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -77,6 +77,19 @@ class CommentsController extends Controller
         ]);
         $comment = Comment::find($commentId);
         $tweetId = $comment->tweet_id;
+        return redirect()->route('allComments', [
+            'tweetId' => $tweetId
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function delete($tweetId, $id)
+    {
+        Comment::find($id)->delete();
         return redirect()->route('allComments', [
             'tweetId' => $tweetId
         ]);
